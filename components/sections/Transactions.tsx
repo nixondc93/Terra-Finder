@@ -14,48 +14,23 @@ import {
 import axios, { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { ITransactions } from "../../utils/types";
 import { transactionsUrl } from "../../utils/urls";
 import TransactionTableRow from "../TransactionTableRow";
-
-interface ITransactions {
-  id: number;
-  chainId: string;
-  timestamp: string;
-  txhash: string;
-  height: string;
-  tx: {
-    type: string;
-    value: {
-      fee: {
-        amount: [
-          {
-            denom: string;
-            amount: string;
-          }
-        ];
-      };
-      msg: [
-        {
-          value: {
-            from_address: string;
-            to_address: string;
-            amount: [
-              {
-                dnom: string;
-                amount: string;
-              }
-            ];
-          };
-        }
-      ];
-    };
-  };
-}
 
 interface TransactionResponse {
   next: number;
   txs: ITransactions[];
 }
+
+const CardWithMargin = styled(Card)`
+  margin-top: 20px;
+`;
+
+const CardHeaderWithBackground = styled(CardHeader)`
+  background: rgba(84, 147, 247, 0.1);
+`;
 
 const Transactions = () => {
   const router = useRouter();
@@ -94,8 +69,8 @@ const Transactions = () => {
   };
 
   return (
-    <Card>
-      <CardHeader title="Transactions" />
+    <CardWithMargin>
+      <CardHeaderWithBackground title="Transactions" />
       <CardContent>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -117,9 +92,11 @@ const Transactions = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Button onClick={loadMoreHandler}>Load More</Button>
+        <Button fullWidth size="large" onClick={loadMoreHandler}>
+          More
+        </Button>
       </CardContent>
-    </Card>
+    </CardWithMargin>
   );
 };
 

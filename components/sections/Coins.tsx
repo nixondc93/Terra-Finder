@@ -2,8 +2,9 @@ import { Button, Card, CardContent, CardHeader, List } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { balancesUrl } from "../../utils/urls";
-import CoinListItem from "../listItems/CoinListItem";
+import CoinListItem from "../CoinListItem";
 
 interface Balance {
   denom: string;
@@ -19,6 +20,14 @@ interface CoinResponse {
   balances: Balance[];
   pagination: Pagination;
 }
+
+const CardWithMargin = styled(Card)`
+  margin-top: 20px;
+`;
+
+const CardHeaderWithBackground = styled(CardHeader)`
+  background: rgba(84, 147, 247, 0.1);
+`;
 
 const Coins = () => {
   const router = useRouter();
@@ -59,8 +68,8 @@ const Coins = () => {
   };
 
   return (
-    <Card>
-      <CardHeader title="Coins" />
+    <CardWithMargin>
+      <CardHeaderWithBackground title="Coins" />
       <CardContent>
         <List>
           {coinList.map(
@@ -73,7 +82,7 @@ const Coins = () => {
           <Button onClick={handleLoadMore}>Load More</Button>
         )}
       </CardContent>
-    </Card>
+    </CardWithMargin>
   );
 };
 

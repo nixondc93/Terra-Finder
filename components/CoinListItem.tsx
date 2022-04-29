@@ -1,10 +1,10 @@
 import { ListItem, ListItemText } from "@mui/material";
-import { parseDenom } from "../../utils/helpers";
+import { parseDenom, parseDenomInt } from "../utils/helpers";
 const CoinListItem = ({ denom, amount }: { denom: string; amount: string }) => {
   return (
     <ListItem divider>
       <ListItemText primary={parseDenom(denom)} />
-      <ListItemText primary={amount} />
+      <ListItemText primary={parseDenomInt(parseInt(amount))} />
     </ListItem>
   );
 };

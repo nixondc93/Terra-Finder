@@ -1,5 +1,10 @@
 import { CardHeader, Card, CardContent } from "@mui/material";
 import { useRouter } from "next/router";
+import styled from "styled-components";
+
+const CardHeaderWithBackground = styled(CardHeader)`
+  background: rgba(84, 147, 247, 0.1);
+`;
 
 const Address = () => {
   const router = useRouter();
@@ -7,7 +12,7 @@ const Address = () => {
 
   return (
     <Card variant="outlined">
-      <CardHeader title="Address" />
+      <CardHeaderWithBackground title="Address" />
       <CardContent>
         <span>{accountKey}</span>
       </CardContent>

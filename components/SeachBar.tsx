@@ -58,10 +58,7 @@ const SearchBar = () => {
 
   return (
     <Form onSubmit={submitHandler}>
-      <SearchInput
-        placeholder="Search Block / Tx / Account"
-        onChange={changeHandler}
-      />
+      <SearchInput placeholder="Search Account" onChange={changeHandler} />
       <SubmitButton type="submit">
         <span className="material-icons-sharp">search</span>
       </SubmitButton>

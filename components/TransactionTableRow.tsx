@@ -1,8 +1,9 @@
 import { TableCell, TableRow } from "@mui/material";
 import { useRouter } from "next/router";
-import { parseDenom } from "../utils/helpers";
+import { parseDenom, parseDenomInt, parseDateTime } from "../utils/helpers";
+import { ITransactions } from "../utils/types";
 
-const TransactionTableRow = ({ tx_data }) => {
+const TransactionTableRow = ({ tx_data }: { tx_data: ITransactions }) => {
   const router = useRouter();
   const { accountKey } = router.query;
   const {
@@ -32,6 +33,7 @@ const TransactionTableRow = ({ tx_data }) => {
 
   const truncateTxHash = (txhash: string) =>
     `${txhash.substring(0, 7)}...${txhash.substring(56)}`;
+
   return (
     <TableRow>
       <TableCell>{truncateTxHash(txhash)}</TableCell>
@@ -41,16 +43,22 @@ const TransactionTableRow = ({ tx_data }) => {
       </TableCell>
       <TableCell>
         {!isRecievingFunds
-          ? `-${transactionValue.amount} ${parseDenom(transactionValue.denom)}`
+          ? `-${parseDenomInt(parseInt(transactionValue.amount))} ${parseDenom(
+              transactionValue.denom
+            )}`
           : "-"}
       </TableCell>
       <TableCell>
         {isRecievingFunds
-          ? `+${transactionValue.amount} ${parseDenom(transactionValue.denom)}`
+          ? `+${parseDenomInt(parseInt(transactionValue.amount))} ${parseDenom(
+              transactionValue.denom
+            )}`
           : "-"}
       </TableCell>
-      <TableCell>{timestamp}</TableCell>
-      <TableCell>{`${feeValue.amount} ${feeValue.denom}`}</TableCell>
+      <TableCell>{parseDateTime(timestamp)}</TableCell>
+      <TableCell>{`${parseDenomInt(parseInt(feeValue.amount))} ${parseDenom(
+        feeValue.denom
+      )}`}</TableCell>
     </TableRow>
   );
 };
