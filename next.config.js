@@ -1,6 +1,7 @@
 const withTM = require("next-transpile-modules")([
   "@mui/material",
   "@mui/system",
+  "@mui/icons-material",
 ]);
 
 /** @type {import('next').NextConfig} */

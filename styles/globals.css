@@ -3,7 +3,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  overscroll-behavior: contain;
+  color: #2043b5;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
@@ -18,8 +18,12 @@ a {
   text-decoration: none;
 }
 
+div, p, h2, h3, span td, th {
+  color: #2043b5;
+
+}
+
 * {
   box-sizing: border-box;
-  color: #2043b5;
 }
 

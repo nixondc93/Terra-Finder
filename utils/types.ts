@@ -5,6 +5,7 @@ export interface ITransactions {
   timestamp: string;
   txhash: string;
   height: string;
+  raw_log: string;
   tx: {
     type: string;
     value: {

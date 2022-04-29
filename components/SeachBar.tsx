@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState } from "react";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchInput = styled.input`
   width: 100%;
@@ -41,6 +42,10 @@ const Form = styled.form`
   position: relative;
 `;
 
+const WhiteSeachIcon = styled(SearchIcon)`
+  color: white;
+`;
+
 const SearchBar = () => {
   const router = useRouter();
   const [query, setQuery] = useState("");
@@ -60,7 +65,7 @@ const SearchBar = () => {
     <Form onSubmit={submitHandler}>
       <SearchInput placeholder="Search Account" onChange={changeHandler} />
       <SubmitButton type="submit">
-        <span className="material-icons-sharp">search</span>
+        <WhiteSeachIcon />
       </SubmitButton>
     </Form>
   );

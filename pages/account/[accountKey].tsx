@@ -40,7 +40,7 @@ const Account: NextPage = () => {
   return (
     <PageStyles>
       <Navigation />
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         {error && <NoResults />}
         {!error && (
           <>
